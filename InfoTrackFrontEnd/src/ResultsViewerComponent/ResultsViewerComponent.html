@@ -1,0 +1,19 @@
+<div>
+    <h2>Results Viewer</h2>
+    <p>This is where the results of the location search will be displayed.</p>
+    <button (click)="ViewResults()">View Results</button>
+
+    <select [formControl]="locationsControl" placeholder="Enter location">>
+        @for(location of locations; track location) 
+        {
+            <option value="{{location}}">{{location}}</option>
+        }
+    </select>
+    @if(results | async; as results)
+    {
+        <div>
+            <h3>Results for {{currentResultsLocation}}</h3>
+            <p>{{results.name}}</p>
+        </div>
+    }
+</div>
