@@ -1,0 +1,30 @@
+.title,
+.loading-text {
+    text-align: center;
+}
+
+.results-viewer-dropdown,
+.results-viewer-button {
+  padding: 0.75rem 1rem;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background: white;
+  font-size: 1rem;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+}
+
+.results-viewer-button:hover {
+  background: #eaeaea;
+}
+.solicitor-results-list {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(280px, 1fr));
+    gap: 1rem;
+}
+
+.options-select {
+    display: flex;
+    justify-content: center; 
+    gap: 1rem;
+    margin-bottom: 1rem;
+}   

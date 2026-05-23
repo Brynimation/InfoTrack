@@ -3,9 +3,6 @@
 public class SolicitorResultsResponseDto
 {
     public string Name { get; set; }
-
-    public SolicitorResultsResponseDto(string Name) 
-    {
-        this.Name = Name;
-    }
+    public string Address { get; set; }
+    public string PhoneNumber { get; set; }
 }

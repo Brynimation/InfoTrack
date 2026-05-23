@@ -1,0 +1,14 @@
+@if (data) {
+<div class="individual-solicitor-result">
+  <table class="solicitor-table">
+    <tbody>
+      @for (property of data | keyvalue; track property.key) {
+        <tr>
+          <th>{{ convertCamelCaseToDisplay(property.key) }}</th>
+          <td>{{ property.value }}</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>
+}

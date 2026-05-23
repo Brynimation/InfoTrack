@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { SolicitorResultsDto as SolicitorResultsResponseDto } from "./solicitor-results-types";
+import { SolicitorResultsResponseDto as SolicitorResultsResponseDto } from "./solicitor-results-types";
 import { Observable } from "rxjs/internal/Observable";
 import { HttpClient } from "@angular/common/http";
 
@@ -12,8 +12,8 @@ export class SolicitorResultsClient {
 
     }
 
-    public getSolicitorResults(location: string): Observable<SolicitorResultsResponseDto> {
+    public getSolicitorResults(location: string): Observable<SolicitorResultsResponseDto[]> {
         const url: string = `${this.baseUrl}/SolicitorResults?location=${location}`;
-        return this._httpClient.get<SolicitorResultsResponseDto>(url);
+        return this._httpClient.get<SolicitorResultsResponseDto[]>(url);
     }   
  }

@@ -1,19 +1,27 @@
-<div>
-    <h2>Results Viewer</h2>
-    <p>This is where the results of the location search will be displayed.</p>
-    <button (click)="ViewResults()">View Results</button>
+<div class="results-viewer">
+    <h2 class="title">Search for Conveyancers by Location</h2>
+    <div class="options-select">
+        <select class="results-viewer-dropdown" [formControl]="locationsControl" placeholder="Enter location">
+            @for(location of locations; track location) 
+            {
+                <option value="{{location}}">{{location}}</option>
+            }
+        </select>
+        <button class="results-viewer-button" (click)="ViewResults()">View Results</button>
+    </div>
+    <div class="loading-text">{{loadingText}}</div>
 
-    <select [formControl]="locationsControl" placeholder="Enter location">>
-        @for(location of locations; track location) 
-        {
-            <option value="{{location}}">{{location}}</option>
-        }
-    </select>
     @if(results | async; as results)
     {
         <div>
             <h3>Results for {{currentResultsLocation}}</h3>
-            <p>{{results.name}}</p>
+            <div class="solicitor-results-list">
+                @for (result of results; track result) 
+                {
+                    <solicitor-results [data]="result"></solicitor-results>
+                }
+            </div>
+
         </div>
     }
 </div>

@@ -1,0 +1,24 @@
+.individual-solicitor-result {
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+  background: white;
+}
+
+.solicitor-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.solicitor-table th,
+.solicitor-table td {
+  padding: 0.9rem 1rem;
+  border-bottom: 1px solid #eee;
+  text-align: left;
+}
+
+.solicitor-table th {
+  width: 35%;
+  background: #f6f6f6;
+  font-weight: 700;
+}

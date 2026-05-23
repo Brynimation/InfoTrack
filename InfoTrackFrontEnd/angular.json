@@ -64,7 +64,8 @@
               "buildTarget": "InfoTrackFrontEnd:build:production"
             },
             "development": {
-              "buildTarget": "InfoTrackFrontEnd:build:development"
+              "buildTarget": "InfoTrackFrontEnd:build:development",
+              "port": 4200
             }
           },
           "defaultConfiguration": "development"
