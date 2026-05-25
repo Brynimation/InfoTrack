@@ -11,8 +11,7 @@ public class ParsingService : IParsingService
     public List<SolicitorResultsResponseDto> Parse(string input) 
     {
         var resultsList = ExtractResultsList(input);
-        var solicitors = GetAllSolicitorInformation(resultsList).Select(stringRep => GetStructuredSolicitorData(stringRep)).ToList();
-        return solicitors;
+        return GetAllSolicitorInformation(resultsList).Select(stringRep => GetStructuredSolicitorData(stringRep)).ToList();
     }
 
     #endregion

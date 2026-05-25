@@ -5,8 +5,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 
-var swaggerCorsPolicyOrigin = builder.Configuration["ServerConfig:SwaggerOrigin"];
-var angularCorsPolicyOrigin = builder.Configuration["ServerConfig:FrontEndOrigin"];
+string swaggerCorsPolicyOrigin = builder.Configuration["ServerConfig:SwaggerOrigin"] ?? "http://localhost:5216";
+string angularCorsPolicyOrigin = builder.Configuration["ServerConfig:FrontEndOrigin"] ?? "http://localhost:4200";
 var corsPolicyName = "localCorsPolicy";
 
 builder.Services.AddCors(options => {
@@ -27,7 +27,6 @@ builder.Services.AddScoped<SolicitorsClient>();
 builder.Services.AddHttpClient<SolicitorsClient>(client =>
 {
     client.BaseAddress = new Uri("https://www.solicitors.com");
-
     //user agent header - used by the server to identify the client - I found that the get request would only return the actual contents of the html when this was non-empty
     var userAgentHeader = "infotracktest/1.0 useragentheader";
 
@@ -36,6 +35,9 @@ builder.Services.AddHttpClient<SolicitorsClient>(client =>
 
 builder.Services.AddScoped<IParsingService, ParsingService>();
 builder.Services.AddScoped<ISolicitorsService, SolicitorsService>();
+
+builder.Logging.ClearProviders();
+builder.Logging.AddConsole();
 
 var app = builder.Build();
 

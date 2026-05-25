@@ -5,16 +5,17 @@ public class SolicitorsClient
 
     #region Public Constructors
 
-    public SolicitorsClient(HttpClient httpClient) 
+    public SolicitorsClient(HttpClient httpClient, ILogger<SolicitorsClient> logger)
     {
         this._httpClient = httpClient;
+        this._logger = logger;
     }
 
     #endregion
 
     #region Public Methods
 
-    public async Task<string> GetSolicitorsBySpeciality(string speciality, string location) 
+    public async Task<string> GetSolicitorsBySpeciality(string speciality, string location)
     {
         try
         {
@@ -22,9 +23,10 @@ public class SolicitorsClient
             response.EnsureSuccessStatusCode();
             return await response.Content.ReadAsStringAsync();
         }
-        catch (HttpRequestException e) 
+        catch (HttpRequestException e)
         {
-            return "FAILED!";
+            _logger.LogError($"Get request failed with code {e.StatusCode}. Exception: {e.Message}");
+            return "";
         }
     }
 
@@ -33,6 +35,7 @@ public class SolicitorsClient
     #region Private Members
 
     private readonly HttpClient _httpClient;
+    private readonly ILogger<SolicitorsClient> _logger;
 
     #endregion
 }

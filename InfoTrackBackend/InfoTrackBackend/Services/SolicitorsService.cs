@@ -10,8 +10,7 @@ public class SolicitorsService(SolicitorsClient client, IParsingService parser) 
     public async Task<List<SolicitorResultsResponseDto>> GetSolicitorsResultsAsync(string speciality, string location)
     {
         var httpContent = await client.GetSolicitorsBySpeciality(speciality, location);
-        var parsed = parser.Parse(httpContent);
-        return parsed;
+        return parser.Parse(httpContent);
     }
 
     #endregion

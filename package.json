@@ -1,0 +1,9 @@
+{
+  "scripts": {
+    "postinstall": "npm install --prefix ./InfoTrackFrontEnd",
+    "start": "concurrently \"dotnet run --project ./InfoTrackBackend/InfoTrackBackend/InfoTrackBackend.csproj --launch-profile https\" \"npm start --prefix ./InfoTrackFrontEnd\""
+  },
+  "devDependencies": {
+    "concurrently": "^9.0.0"
+  }
+}
